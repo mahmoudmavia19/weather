@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:weather/data/data_source/remote_datasource.dart';
+import 'package:weather/data/repository/weather_repository.dart';
+import 'package:weather/domain/usecases/get_weather_by_city.dart';
 
-void main() {
+void main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetWeatherByCityName(WeatherRepository(RemoteDataSource())).execute('egypt');
   runApp(const MyApp());
 }
 
